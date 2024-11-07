@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using WhiteLagoon.Domain.Entities;
 using WhiteLagoon.Infrastructure.Data;
 
 namespace WhiteLagoon.Web.Controllers
@@ -22,6 +23,16 @@ namespace WhiteLagoon.Web.Controllers
             return View();
 
             //return View("Index");
+        }
+
+        [HttpPost]
+        public IActionResult Create(Villa objec)
+        {
+            _db.Villas.Add(objec);
+            _db.SaveChanges();
+            return RedirectToAction("Index","Villa");
+            //return RedirectToAction("Index");
+            //return View("Index"); //Error here
         }
     }
 }
