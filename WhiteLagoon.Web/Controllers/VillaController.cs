@@ -17,5 +17,11 @@ namespace WhiteLagoon.Web.Controllers
                 
             return View(villars);
         }
+        public IActionResult Create()
+        {
+            return View();
+
+            //return View("Index");
+        }
     }
 }
