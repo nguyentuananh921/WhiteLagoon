@@ -32,7 +32,8 @@ namespace WhiteLagoon.Web.Controllers
                 Text = u.Name,
                 Value = u.Id.ToString()
             });
-            ViewData["VillaList"] = list;//Viewdata is to move data from controller to view
+            //ViewData["VillaList"] = list;//Viewdata is to move data from controller to view
+            ViewBag.VillaList = list;
             return View();
 
             //return View("Index");
