@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using WhiteLagoon.Domain.Entities;
 using WhiteLagoon.Infrastructure.Data;
@@ -93,7 +94,7 @@ namespace WhiteLagoon.Web.Controllers
             Villa? obj = _db.Villas.FirstOrDefault(needVilla => needVilla.Id == VillaId);
             //Villa? obj2 = _db.Villas.Find(VillaId);
             //var villarList = _db.Villas.Where(u => u.Price > 50 && u.Occupancy > 4).ToList();
-            if (VillaId == null)
+            if (obj is null)
             {
                 //return NotFound();   
                 return RedirectToAction("Error", "Home");
@@ -101,25 +102,27 @@ namespace WhiteLagoon.Web.Controllers
 
             return View(obj);
         }
-        //[HttpPost]
-        //public IActionResult Update(Villa obj)
-        //{
-        //    //Custome Validation
-        //    //if (obj.Name == obj.Description)
-        //    //{
-        //    //    //ModelState.AddModelError("description", "The description cannot exactly match the Name.");
-        //    //    ModelState.AddModelError("", "The description cannot exactly match the Name.");
-        //    //}
-        //    if (ModelState.IsValid)
-        //    {
-        //        _db.Villas.Update(obj);
-        //        _db.SaveChanges();
-        //        return RedirectToAction("Index", "Villa");
-        //        //return RedirectToAction("Index");
-        //        //return View("Index"); //Error here
-        //    }
-        //    return View(obj);
-        //}
+        [HttpPost]
+        public IActionResult Delete(Villa obj)
+        {
+            //Custome Validation
+            //if (obj.Name == obj.Description)
+            //{
+            //    //ModelState.AddModelError("description", "The description cannot exactly match the Name.");
+            //    ModelState.AddModelError("", "The description cannot exactly match the Name.");
+            //}
+            Villa? recordTodelete = _db.Villas.FirstOrDefault(u => u.Id == obj.Id);
+            if (recordTodelete is not null)
+            {
+                
+                _db.Villas.Remove(recordTodelete);
+                _db.SaveChanges();
+                return RedirectToAction("Index", "Villa");
+                //return RedirectToAction("Index");
+                //return View("Index"); //Error here
+            }
+            return View(obj);
+        }
         #endregion
 
     }
