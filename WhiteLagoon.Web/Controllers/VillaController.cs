@@ -43,10 +43,12 @@ namespace WhiteLagoon.Web.Controllers
             {
                 _db.Villas.Add(obj);
                 _db.SaveChanges();
+                TempData["success"] = "The villa has been create successfully.";
                 return RedirectToAction("Index", "Villa");
                 //return RedirectToAction("Index");
                 //return View("Index"); //Error here
             }
+            TempData["error"] = "The villa has not been create successfully.";
             return View(obj);
         }
         #endregion
@@ -79,10 +81,12 @@ namespace WhiteLagoon.Web.Controllers
             {
                 _db.Villas.Update(obj);
                 _db.SaveChanges();
+                TempData["success"] = "The villa has been updated successfully.";
                 return RedirectToAction("Index", "Villa");
                 //return RedirectToAction("Index");
                 //return View("Index"); //Error here
             }
+            TempData["error"] = "The villa hasn't been updated successfully.";
             return View(obj);
         }
         #endregion
@@ -117,10 +121,12 @@ namespace WhiteLagoon.Web.Controllers
                 
                 _db.Villas.Remove(recordTodelete);
                 _db.SaveChanges();
+                TempData["success"] = "The villa has been delete successfully.";
                 return RedirectToAction("Index", "Villa");
                 //return RedirectToAction("Index");
                 //return View("Index"); //Error here
             }
+            TempData["error"] = "The villa hasn't been deleted successfully.";
             return View(obj);
         }
         #endregion
