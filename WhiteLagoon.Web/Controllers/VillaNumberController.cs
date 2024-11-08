@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using WhiteLagoon.Domain.Entities;
@@ -26,6 +27,12 @@ namespace WhiteLagoon.Web.Controllers
         
         public IActionResult Create()
         {
+            IEnumerable<SelectListItem> list = _db.Villas.ToList().Select(u => new SelectListItem
+            {
+                Text = u.Name,
+                Value = u.Id.ToString()
+            });
+            ViewData["VillaList"] = list;//Viewdata is to move data from controller to view
             return View();
 
             //return View("Index");
@@ -48,7 +55,7 @@ namespace WhiteLagoon.Web.Controllers
             //< FrameworkReference Include = "Microsoft.AspNetCore.App" ></ FrameworkReference >
             //</ ItemGroup >
             #endregion
-
+            
             if (ModelState.IsValid)
             {
                 _db.VillaNumbers.Add(obj);
