@@ -56,7 +56,7 @@ namespace WhiteLagoon.Web.Controllers
         [HttpGet]
         public IActionResult Update(int? VillaId)
         {
-            Villa? obj = _villaRepo.GetByIdRepo(needVilla => needVilla.Id == VillaId);
+            Villa? obj = _villaRepo.GetRepo(needVilla => needVilla.Id == VillaId);
             if (VillaId == null)
             {                
                 return RedirectToAction("Error", "Home");
@@ -82,7 +82,7 @@ namespace WhiteLagoon.Web.Controllers
         [HttpGet]
         public IActionResult Delete(int? VillaId)
         {
-            Villa? obj = _villaRepo.GetByIdRepo(needVilla => needVilla.Id == VillaId);
+            Villa? obj = _villaRepo.GetRepo(needVilla => needVilla.Id == VillaId);
             if (obj is null)
             { 
                 return RedirectToAction("Error", "Home");
@@ -92,7 +92,7 @@ namespace WhiteLagoon.Web.Controllers
         [HttpPost]
         public IActionResult Delete(Villa obj)
         {
-         Villa? recordTodelete = _villaRepo.GetByIdRepo(u => u.Id == obj.Id);
+         Villa? recordTodelete = _villaRepo.GetRepo(u => u.Id == obj.Id);
             if (recordTodelete is not null)
             {
                 _villaRepo.RemoveRepo(recordTodelete);
