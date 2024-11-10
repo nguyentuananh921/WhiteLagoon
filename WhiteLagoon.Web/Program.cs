@@ -1,7 +1,9 @@
 using Microsoft.EntityFrameworkCore;
 using WhiteLagoon.Application.Common.Interfaces.Infrastructure.Repository;
+using WhiteLagoon.Application.Common.Interfaces.Infrastructure.Repository.Common;
 using WhiteLagoon.Infrastructure.Data;
 using WhiteLagoon.Infrastructure.Repositories;
+using WhiteLagoon.Infrastructure.Repositories.Common;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,7 +15,8 @@ var con = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<ApplicationDbContext>(option=>option.UseSqlServer(con));
 #endregion
 #region Repository
-builder.Services.AddScoped<IVillaRepository,VillaRepository>();
+//builder.Services.AddScoped<IVillaRepository,VillaRepository>();
+builder.Services.AddScoped<IUnitOfWork,UnitOfWork>();
 #endregion
 var app = builder.Build();
 
