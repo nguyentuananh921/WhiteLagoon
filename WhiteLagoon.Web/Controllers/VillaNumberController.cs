@@ -94,7 +94,8 @@ namespace WhiteLagoon.Web.Controllers
                 _db.VillaNumbers.Add(obj.VillaNumber);
                 _db.SaveChanges();
                 TempData["success"] = "The villa number has been create successfully.";
-                return RedirectToAction("Index", "VillaNumber");
+                return RedirectToAction(nameof(Index));
+                //return RedirectToAction("Index", "VillaNumber");
                 //return RedirectToAction("Index");
                 //return View("Index"); //Error here
             }
@@ -150,7 +151,8 @@ namespace WhiteLagoon.Web.Controllers
                 _db.VillaNumbers.Update(obj.VillaNumber);
                 _db.SaveChanges();
                 TempData["success"] = "The villa number has been update successfully.";
-                return RedirectToAction("Index", "VillaNumber");
+                return RedirectToAction(nameof(Index));
+                //return RedirectToAction("Index", "VillaNumber");
                 //return RedirectToAction("Index");
                 //return View("Index"); //Error here
             }
@@ -167,39 +169,48 @@ namespace WhiteLagoon.Web.Controllers
         [HttpGet]
         public IActionResult Delete(int? villaNumberId)
         {
-            VillaNumber? obj = _db.VillaNumbers.FirstOrDefault(needVillaNumber => needVillaNumber.Villa_Number == villaNumberId);
+            #region Using VM
+            VillaNumberVM villaNumberVM = new VillaNumberVM()
+            {
+                VillaList = _db.Villas.ToList().Select(u => new SelectListItem
+                {
+                    Text = u.Name,
+                    Value = u.Id.ToString()
+                }),
+                VillaNumber = _db.VillaNumbers.FirstOrDefault(u => u.Villa_Number == villaNumberId)
+            };
+            #endregion
+            //Villa? obj = _db.Villas.FirstOrDefault(needVilla => needVilla.Id == villaNumberId);
             //Villa? obj2 = _db.Villas.Find(VillaId);
             //var villarList = _db.Villas.Where(u => u.Price > 50 && u.Occupancy > 4).ToList();
-            if (obj is null)
+            if (villaNumberVM.VillaNumber == null)
             {
                 //return NotFound();   
                 return RedirectToAction("Error", "Home");
             }
 
-            return View(obj);
+            return View(villaNumberVM);
         }
         [HttpPost]
-        public IActionResult Delete(VillaNumber obj)
-        {
-            //Custome Validation
-            //if (obj.Name == obj.Description)
-            //{
-            //    //ModelState.AddModelError("description", "The description cannot exactly match the Name.");
-            //    ModelState.AddModelError("", "The description cannot exactly match the Name.");
-            //}
-            VillaNumber? recordTodelete = _db.VillaNumbers.FirstOrDefault(u => u.Villa_Number == obj.Villa_Number);
+        public IActionResult Delete(VillaNumberVM obj)
+        {            
+            VillaNumber? recordTodelete = _db.VillaNumbers.FirstOrDefault(u => u.Villa_Number == obj.VillaNumber.Villa_Number);
             if (recordTodelete is not null)
             {
                 
                 _db.VillaNumbers.Remove(recordTodelete);
                 _db.SaveChanges();
                 TempData["success"] = "The villa number has been delete successfully.";
-                return RedirectToAction("Index", "Villa");
+                return RedirectToAction(nameof(Index));
+                //return RedirectToAction("Index", "VillaNumber");
                 //return RedirectToAction("Index");
                 //return View("Index"); //Error here
             }
-            TempData["error"] = "The villa number hasn't been deleted successfully.";
-            return View(obj);
+            else 
+            {
+                TempData["error"] = "The villa number hasn't been deleted successfully.";
+                return View();
+            }            
         }
         #endregion
 
