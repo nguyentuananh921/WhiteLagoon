@@ -15,6 +15,6 @@ namespace WhiteLagoon.Application.Common.Interfaces.Infrastructure.Repository
         void AddRepo(Villa entity);
         void RemoveRepo(Villa entity);
         void UpdateRepo(Villa entity);
-        void Save();
+        void SaveRepo();
     }
 }

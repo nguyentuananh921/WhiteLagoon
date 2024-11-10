@@ -67,7 +67,7 @@ namespace WhiteLagoon.Infrastructure.Repositories
             _db.Remove(entity);
         }
 
-        public void Save()
+        public void SaveRepo()
         {
             _db.SaveChanges();
         }
