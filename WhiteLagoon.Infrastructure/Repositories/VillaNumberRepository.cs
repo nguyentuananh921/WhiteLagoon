@@ -1,8 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using WhiteLagoon.Application.Common.Interfaces.Infrastructure.Repository;
@@ -13,12 +11,12 @@ using WhiteLagoon.Infrastructure.Repositories.Common;
 
 namespace WhiteLagoon.Infrastructure.Repositories
 {
-    public class VillaRepository :GenericRepository<Villa>, IVillaRepository
+    public class VillaNumberRepository: GenericRepository<VillaNumber>,IVillaNumberRepository
     {
         private readonly ApplicationDbContext _db;
-        public VillaRepository(ApplicationDbContext db):base(db) 
+        public VillaNumberRepository(ApplicationDbContext db):base(db) 
         {
-            _db = db;
+                _db = db;
         }
     }
 }

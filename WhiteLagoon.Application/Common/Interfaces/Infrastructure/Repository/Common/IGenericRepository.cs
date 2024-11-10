@@ -13,7 +13,9 @@ namespace WhiteLagoon.Application.Common.Interfaces.Infrastructure.Repository.Co
         IEnumerable<T> GetAllRepo(Expression<Func<T, bool>>? filter = null, string? includeProperties = null);
         T GetRepo(Expression<Func<T, bool>> filter, string? includeProperties = null);
         void AddRepo(T entity);
-        void RemoveRepo(T entity);       
+        void RemoveRepo(T entity);
+        void UpdateRepo(T entity);
+        bool AnyRepo(Expression<Func<T, bool>> filter);
 
     }
 }

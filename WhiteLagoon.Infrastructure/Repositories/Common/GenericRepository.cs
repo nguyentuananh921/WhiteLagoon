@@ -25,6 +25,11 @@ namespace WhiteLagoon.Infrastructure.Repositories.Common
             _dbSet.Add(entity);
         }
 
+        public bool AnyRepo(Expression<Func<T, bool>> filter = null)
+        {
+            return _dbSet.Any(filter);
+        }
+
         public IEnumerable<T> GetAllRepo(Expression<Func<T, bool>>? filter = null, string? includeProperties = null)
         {
             IQueryable<T> query = _dbSet;
@@ -66,6 +71,11 @@ namespace WhiteLagoon.Infrastructure.Repositories.Common
         public void RemoveRepo(T entity)
         {
             _dbSet.Remove(entity);
+        }
+
+        public void UpdateRepo(T entity)
+        {
+            _db.Update(entity);
         }
     }
 }

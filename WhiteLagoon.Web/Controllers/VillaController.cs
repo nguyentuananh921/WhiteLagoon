@@ -42,7 +42,7 @@ namespace WhiteLagoon.Web.Controllers
                 //_db.Villas.Add(obj);
                 //_db.SaveChanges();
                 _unitOfWork.VillaRepo.AddRepo(obj);
-                _unitOfWork.VillaRepo.SaveRepo();
+                _unitOfWork.SaveUnitOfWork();
                 TempData["success"] = "The villa has been create successfully.";
                 return RedirectToAction("Index", "Villa");
                 //return RedirectToAction("Index");
@@ -71,7 +71,7 @@ namespace WhiteLagoon.Web.Controllers
             if (ModelState.IsValid)
             {                
                 _unitOfWork.VillaRepo.UpdateRepo(obj);
-                _unitOfWork.VillaRepo.SaveRepo();
+                _unitOfWork.SaveUnitOfWork();
                 TempData["success"] = "The villa has been updated successfully.";
                 return RedirectToAction("Index", "Villa");              
             }
@@ -97,7 +97,7 @@ namespace WhiteLagoon.Web.Controllers
             if (recordTodelete is not null)
             {
                 _unitOfWork.VillaRepo.RemoveRepo(recordTodelete);
-                _unitOfWork.VillaRepo.SaveRepo();
+                _unitOfWork.SaveUnitOfWork();
                 TempData["success"] = "The villa has been delete successfully.";
                 return RedirectToAction("Index", "Villa");  
             }
