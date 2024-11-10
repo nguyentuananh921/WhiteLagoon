@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
+using WhiteLagoon.Application.Common.Interfaces.Infrastructure.Repository;
 using WhiteLagoon.Infrastructure.Data;
+using WhiteLagoon.Infrastructure.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,7 +12,9 @@ builder.Services.AddControllersWithViews();
 var con = builder.Configuration.GetConnectionString("DefaultConnection"); 
 builder.Services.AddDbContext<ApplicationDbContext>(option=>option.UseSqlServer(con));
 #endregion
-
+#region Repository
+builder.Services.AddScoped<IVillaRepository,VillaRepository>();
+#endregion
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
