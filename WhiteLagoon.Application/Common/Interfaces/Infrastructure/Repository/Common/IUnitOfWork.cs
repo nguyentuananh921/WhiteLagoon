@@ -10,6 +10,7 @@ namespace WhiteLagoon.Application.Common.Interfaces.Infrastructure.Repository.Co
     {
         IVillaRepository VillaRepo { get; }
         IVillaNumberRepository VillaNumberRepo { get; }
+        IAmenityRepository AmenityRepo { get; }
         void SaveUnitOfWork();
     }
 }
