@@ -37,7 +37,7 @@
                 <div class="form-group">
                     <label>No. of nights</label>
                     <select class="form-select">
-                        @for(var i = 1; i < 11; i++)
+                        @for (var i = 1; i < 11; i++)
                         {
                             <option value="@i">@i</option>
                         }
@@ -57,8 +57,10 @@
         </div>
         <div id="VillasList">
             <div class="row px-lg-5 m-lg-4 m-sm-0 px-sm-0" style="--bs-gutter-x:0">
+
                 @foreach (var villa in Model.VillaList)
                 {
+
                     <div class="p-4 col-md-12 col-lg-6">
                         <div class="row" style="border-radius:5px; border: 1px solid #aaa">
                             <div class="col-4 p-2">
@@ -68,7 +70,7 @@
                                 <div class="d-flex justify-content-between">
                                     <p class="card-title text-warning" style="font-size:xx-large">@villa.Name</p>
                                     <div class="pt-2">
-                                        <button type="button" class="btn btn-sm btn-outline-success" data-bs-toggle="modal" data-bs-target='#exampleModal-@(11)'>
+                                        <button type="button" class="btn btn-sm btn-outline-success" data-bs-toggle="modal" data-bs-target='#exampleModal-@(villa.Id)'>
                                             Details
                                         </button>
                                     </div>
@@ -100,7 +102,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="modal fade" id="exampleModal-@(11)" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+                    <div class="modal fade" id="exampleModal-@(villa.Id)" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-xl" style="border: 1px solid #aaa; border-radius:7px;">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -108,7 +111,44 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body m-0">
-                                    Villa DETAILS
+
+                                    <div class="row">
+                                        <div class="col-12 col-md-5">
+                                            <img src="@villa.ImageUrl" style="border-radius:10px;" width="100%" />
+                                        </div>
+                                        <div class="col-12 col-md-7">
+                                            <div class="row p-2">
+                                                <div class="col-12">
+                                                    <p class="card-title text-warning" style="font-size:xx-large">@villa.Name</p>
+                                                    <p class="card-text" style="font-size:large">
+                                                        @Html.Raw(villa.Description)
+                                                    </p>
+                                                    @if (villa.VillaAmenities != null && villa.VillaAmenities.Count() > 0)
+                                                    {
+                                                        <p class="h5 text-white">Villa Amenities</p>
+                                                        <ul>
+                                                            @foreach (var amenity in villa.VillaAmenities)
+                                                            {
+                                                                <li>@amenity.Name</li>
+                                                            }
+                                                        </ul>
+                                                    }
+                                                </div>
+                                            </div>
+                                            <div class="row col-12">
+                                                <span class="text-end p-0 pt-3 m-0">
+                                                    <span class="float-right">Max Occupancy : @villa.Occupancy adults </span><br />
+                                                    <span class="float-right pt-1">Villa Size : @villa.Sqft sqft</span><br />
+                                                    <p class="text-warning font-weight-bold pt-1">
+                                                        USD
+                                                        <span style=" #ff6a00">
+                                                            @villa.Price.ToString("c") / night
+                                                        </span>
+                                                    </p>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Close</button>
@@ -120,5 +160,6 @@
                 }
             </div>
         </div>
-    </form>
+
+        </form>
 </div>
