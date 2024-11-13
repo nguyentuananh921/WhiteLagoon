@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 
 namespace WhiteLagoon.Domain.Entities
 {
@@ -35,5 +36,11 @@ namespace WhiteLagoon.Domain.Entities
         public string? ImageUrl { get; set; }
         public DateTime? Created_Date { get; set; }
         public DateTime? Updated_Date { get; set; }
+
+        [ValidateNever] //One Villa can have many Amenity
+        public IEnumerable<Amenity> VillaAmenities { get; set; }
+
+        [ValidateNever] //One Villa can have many VillaNumber
+        public IEnumerable<VillaNumber> VillaNumber { get; set; }
     }
 }
