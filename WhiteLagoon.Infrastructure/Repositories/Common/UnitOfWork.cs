@@ -17,12 +17,15 @@ namespace WhiteLagoon.Infrastructure.Repositories.Common
 
         public IAmenityRepository AmenityRepo { get; private set; }
 
+        public ICategoryRepository CategoryRepo { get; private set; }
+
         public UnitOfWork(ApplicationDbContext db)
         {
             _db = db;
             VillaRepo=new VillaRepository(_db);
             VillaNumberRepo=new VillaNumberRepository(_db);
             AmenityRepo = new AmenityRepository(_db);
+            CategoryRepo= new CategoryRepository(_db);
         }
 
         public void SaveUnitOfWork()

@@ -11,6 +11,7 @@ namespace WhiteLagoon.Application.Common.Interfaces.Infrastructure.Repository.Co
         IVillaRepository VillaRepo { get; }
         IVillaNumberRepository VillaNumberRepo { get; }
         IAmenityRepository AmenityRepo { get; }
+        ICategoryRepository CategoryRepo { get; }
         void SaveUnitOfWork();
     }
 }

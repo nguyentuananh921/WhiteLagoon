@@ -4,8 +4,9 @@ using WhiteLagoon.Application.Common.Interfaces.Infrastructure.Repository.Common
 using WhiteLagoon.Web.Models;
 using WhiteLagoon.Web.ViewModels.Home;
 
-namespace WhiteLagoon.Web.Controllers
+namespace WhiteLagoon.Web.Areas.Customer.Controllers
 {
+    [Area("Customer")]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
