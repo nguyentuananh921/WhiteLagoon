@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 
-namespace WhiteLagoon.Domain.Entities
+namespace WhiteLagoon.Domain.Entities.WhiteLagoon
 {
     public class VillaNumber
     {

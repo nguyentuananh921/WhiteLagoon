@@ -54,7 +54,10 @@
                             <ul class="dropdown-menu">
                                 <li>
                                     <a class="nav-link" asp-area="Admin" asp-controller="Category" asp-action="Index">Manage Category</a>
-                                </li>                                
+                                </li>   
+                                <li>
+                                    <a class="nav-link" asp-area="Admin" asp-controller="Product" asp-action="Index">Manage Product</a>
+                                </li>
                             </ul>
                         </li>
                     </ul>                    
@@ -80,6 +83,7 @@
     
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="https://cdn.tiny.cloud/1/h44nsurlus8rmbdddnghfnehk7poaweos74ngs3pkd4qxa1c/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

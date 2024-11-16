@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using WhiteLagoon.Domain.Entities;
 using WhiteLagoon.Domain.Entities.Bulky;
+using WhiteLagoon.Domain.Entities.WhiteLagoon;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace WhiteLagoon.Infrastructure.Data

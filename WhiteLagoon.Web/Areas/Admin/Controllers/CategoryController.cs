@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using WhiteLagoon.Application.Common.Interfaces.Infrastructure.Repository.Common;
 using WhiteLagoon.Domain.Entities;
 using WhiteLagoon.Domain.Entities.Bulky;
+using WhiteLagoon.Domain.Entities.WhiteLagoon;
 
 namespace WhiteLagoon.Web.Areas.Admin.Controllers
 {

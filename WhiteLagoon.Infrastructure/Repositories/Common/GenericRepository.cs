@@ -24,7 +24,6 @@ namespace WhiteLagoon.Infrastructure.Repositories.Common
         {
             _dbSet.Add(entity);
         }
-
         public bool AnyRepo(Expression<Func<T, bool>> filter = null)
         {
             return _dbSet.Any(filter);
@@ -39,7 +38,7 @@ namespace WhiteLagoon.Infrastructure.Repositories.Common
             }
             if (!string.IsNullOrEmpty(includeProperties))
             {
-                //Villa, VillaNumber --Case Sensitive
+                //Villa, VillaNumber --Case Sensitive and If you want to Include more, separate by comma
                 foreach (var includePro in includeProperties
                     .Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
                 {

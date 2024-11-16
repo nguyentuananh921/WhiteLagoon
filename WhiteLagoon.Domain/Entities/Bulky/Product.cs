@@ -41,12 +41,16 @@ namespace WhiteLagoon.Domain.Entities.Bulky
         [Range(1, 1000)]
         public double Price100 { get; set; }
 
+        //One to One Relation to Category
+
         public int CategoryId { get; set; }
         [ForeignKey("CategoryId")]
         [ValidateNever]
         public Category Category { get; set; }
 
-        [ValidateNever]
-        public List<ProductImage> ProductImages { get; set; }
+        public string? ImageUrl { get; set; } 
+        //Oney to Many Relation to Product Image      
+        //[ValidateNever]
+        //public IEnumerable<ProductImage>? ProductImages { get; set; }
     }
 }

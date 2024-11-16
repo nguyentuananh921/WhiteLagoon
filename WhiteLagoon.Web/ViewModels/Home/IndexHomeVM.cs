@@ -1,4 +1,5 @@
 ﻿using WhiteLagoon.Domain.Entities;
+using WhiteLagoon.Domain.Entities.WhiteLagoon;
 
 namespace WhiteLagoon.Web.ViewModels.Home
 {

@@ -9,7 +9,7 @@ using System.ComponentModel;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 
-namespace WhiteLagoon.Domain.Entities
+namespace WhiteLagoon.Domain.Entities.WhiteLagoon
 {
     public class Villa
     {

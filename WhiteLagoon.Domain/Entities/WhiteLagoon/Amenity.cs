@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WhiteLagoon.Domain.Entities
+namespace WhiteLagoon.Domain.Entities.WhiteLagoon
 {
     public class Amenity
     {

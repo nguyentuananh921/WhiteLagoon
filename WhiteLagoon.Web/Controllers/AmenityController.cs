@@ -4,8 +4,9 @@ using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using WhiteLagoon.Application.Common.Interfaces.Infrastructure.Repository.Common;
 using WhiteLagoon.Domain.Entities;
+using WhiteLagoon.Domain.Entities.WhiteLagoon;
 using WhiteLagoon.Infrastructure.Data;
-using WhiteLagoon.Web.ViewModels;
+using WhiteLagoon.Web.ViewModels.WhiteLagoon;
 
 namespace WhiteLagoon.Web.Controllers
 {
